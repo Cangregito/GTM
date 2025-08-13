@@ -1,0 +1,8 @@
+<script src="/ESTADIAS/public/js/lib/jquery/jquery.min.js"></script>
+<script src="/ESTADIAS/public/js/lib/tether/tether.min.js"></script>
+<script src="/ESTADIAS/public/js/lib/bootstrap/bootstrap.min.js"></script>
+<script src="/ESTADIAS/public/js/plugins.js"></script>
+<script src="/ESTADIAS/public/js/lib/summernote/summernote.min.js"></script>
+<script src="/ESTADIAS/public/js/lib/bootstrap-sweetalert/sweetalert.min.js"></script>
+<script src="/ESTADIAS/public/js/app.js"></script>
+<script src="/ESTADIAS/public/js/lib/datatables-net/datatables.min.js"></script>

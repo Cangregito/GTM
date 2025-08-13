@@ -1,0 +1,66 @@
+<?php
+require_once('../MainHead/head.php');
+?>
+<!DOCTYPE html>
+<title>Consultar Tiket</title>
+<html>
+
+<body class="with-side-menu">
+    <?php
+    require_once('../MainHead/header.php');
+    ?>
+    <div class="mobile-menu-left-overlay"></div>
+
+    <?php
+    require_once('../MainHead/nav.php');
+    ?>
+
+    <div class="page-content">
+        <div class="container-fluid">
+            <header class="section-header">
+                <div class="tbl">
+                    <div class="tbl-row">
+                        <div class="tbl-cell">
+                            <h3>Consultar Ticket</h3>
+                            <ol class="breadcrumb breadcrumb-simple">
+                                <li><a href="#">Home</a></li>
+                                <li class="active">Consultar Ticket</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="box-typical box-typical-padding">
+                <table id="ticket_data" class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">No.Ticket</th>
+                            <th style="width: 15%;">Categoria</th>
+                            <th class="d-none d-sm-table-cell" style="width: 25;">Titulo</th>
+                            <th style="width: 15%;">Fecha Creación</th>
+                            <th class="text-center" style="width: 15%;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        </div><!--.container-fluid-->
+    </div><!--.page-content-->
+    
+
+    
+    <?php
+    require_once('../MainHead/js.php');
+    ?>
+    <script>
+    var user_id = <?php echo $_SESSION['user_id']; ?>;
+    var rol_id = <?php echo $_SESSION['rol_id']; ?>;
+    </script>
+    <!-- Usa ruta absoluta para asegurar que el JS se cargue correctamente -->
+    <script type="text/javascript" src="/ESTADIAS/view/ConsultarTicket/consultarTicket.js"></script>
+</body>
+</body>
+
+</html>
