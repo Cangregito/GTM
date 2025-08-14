@@ -26,6 +26,7 @@ if (!isset($_SESSION["user_id"])) {
 	<link rel="stylesheet" href="/ESTADIAS/public/css/lib/bootstrap/bootstrap.min.css">
 	<link rel="stylesheet" href="/ESTADIAS/public/css/lib/datatables-net/datatables.min.css">
 	<link rel="stylesheet" href="/ESTADIAS/public/css/separate/vendor/datatables-net.min.css">
-
+	<link rel="stylesheet" href="/ESTADIAS/public/css/separate/vendor/fancybox.min.css">
+	<link rel="stylesheet" href="/ESTADIAS/public/css/separate/pages/activity.min.css">
 	<link rel="stylesheet" href="/ESTADIAS/public/css/main.css">
 </head>

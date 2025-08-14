@@ -10,6 +10,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>GTM</title>
+    <link rel="icon" href="/ESTADIAS/public/img/favicon.ico">
     <link href="public/img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144">
     <link href="public/img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114">
     <link href="public/img/favicon.72x72.png" rel="apple-touch-icon" type="image/png" sizes="72x72">
@@ -78,7 +79,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     </style>
 </head>
 
-<body>
+<body class="with-side-menu">
     <div class="page-center">
         <div class="page-center-in">
             <div class="container-fluid">

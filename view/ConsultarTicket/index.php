@@ -37,14 +37,21 @@ require_once('../MainHead/head.php');
                             <th style="width: 10%;">No.Ticket</th>
                             <th style="width: 15%;">Categoria</th>
                             <th class="d-none d-sm-table-cell" style="width: 25;">Titulo</th>
-                            <th style="width: 15%;">Fecha Creación</th>
-                            <th class="text-center" style="width: 15%;"></th>
+                            <th style="width: 5%;">Estado</th> 
+                            <th style="width: 10;">Fecha Creación</th>
+                            <th class="text-center" style="width: 5%;"></th>
                         </tr>
                     </thead>
                     <tbody>
                     </tbody>
                 </table>
             </div>
+            <div id="ticket-info" class="box-typical" style="margin-bottom: 30px;">
+                <!-- Aquí se mostrará la información del ticket -->
+            </div>
+            <section class="activity-line" id="detalle-lista">
+                <!-- Aquí se imprimen los detalles/conversación -->
+            </section>
 
         </div><!--.container-fluid-->
     </div><!--.page-content-->

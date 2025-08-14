@@ -1,4 +1,4 @@
-console.log("consultarTicket.js cargado");
+
 var tablas;
 function init(){
 }
@@ -64,8 +64,7 @@ $(document).ready(function() {
     });
 });
 // Función para el botón "Ver" en la tabla
-function ver(ticket_id) {
-    alert("Ticket ID: " + ticket_id);
+function ver(tick_id) {
+    window.open('http://localhost/ESTADIAS/view/detalleTicket?ID=' + tick_id, '_blank');
 }
 init();
-
