@@ -4,21 +4,27 @@ if ($_SESSION["rol_id"] == 1) {
 <nav class="side-menu">
     <ul class="side-menu-list">
         <li class="blue-dirty">
-            <a href="../Home/index.php">
+            <a href="/ESTADIAS/view/Home/index.php">
                 <span class="glyphicon glyphicon-th"></span>
                 <span class="lbl">Inicio</span>
             </a>
         </li>
         <li class="blue-dirty">
-            <a href="../NuevoTicket/index.php">
+            <a href="/ESTADIAS/view/NuevoTicket/index.php">
                 <span class="glyphicon glyphicon-th"></span>
                 <span class="lbl">Nuevo ticket</span>
             </a>
         </li>
         <li class="blue-dirty">
-            <a href="../ConsultarTicket/index.php">
+            <a href="/ESTADIAS/view/ConsultarTicket/index.php">
                 <span class="glyphicon glyphicon-th"></span>
                 <span class="lbl">Consultar ticket</span>
+            </a>
+        </li>
+        <li class="blue-dirty">
+            <a href="/ESTADIAS/view/VerCerrado/index.php">
+                <span class="glyphicon glyphicon-th"></span>
+                <span class="lbl">Consultar ticket Cerrado</span>
             </a>
         </li>
     </ul>
@@ -29,15 +35,21 @@ if ($_SESSION["rol_id"] == 1) {
 <nav class="side-menu">
     <ul class="side-menu-list">
         <li class="blue-dirty">
-            <a href="../Home/index.php">
+            <a href="/ESTADIAS/view/Home/index.php">
                 <span class="glyphicon glyphicon-th"></span>
                 <span class="lbl">Inicio</span>
             </a>
         </li>
         <li class="blue-dirty">
-            <a href="../ConsultarTicket/index.php">
+            <a href="/ESTADIAS/view/ConsultarTicket/index.php">
                 <span class="glyphicon glyphicon-th"></span>
-                <span class="lbl">Consultar ticket</span>
+                <span class="lbl">Consultar Ticket</span>
+            </a>
+        </li>
+         <li class="blue-dirty">
+            <a href="/ESTADIAS/view/VerCerrado/index.php">
+                <span class="glyphicon glyphicon-th"></span>
+                <span class="lbl">Consultar Ticket Cerrado</span>
             </a>
         </li>
     </ul>

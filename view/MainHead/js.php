@@ -7,3 +7,4 @@
 <script src="/ESTADIAS/public/js/app.js"></script>
 <script src="/ESTADIAS/public/js/lib/datatables-net/datatables.min.js"></script>
 <script src="/ESTADIAS/public/js/lib/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/ESTADIAS/public/js/profile-images.js"></script>

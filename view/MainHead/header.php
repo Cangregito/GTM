@@ -70,7 +70,11 @@
                     <div class="dropdown user-menu">
                         <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <img src="/ESTADIAS/public/img/avatar-2-64.png" alt="">
+                            <?php if(isset($_SESSION["rol_id"]) && $_SESSION["rol_id"] == 1): ?>
+                                <img src="/ESTADIAS/public/img/Gerente.png" alt="Gerente de Tienda" class="profile-image profile-gerente">
+                            <?php else: ?>
+                                <img src="/ESTADIAS/public/img/Soporte.png" alt="Soporte" class="profile-image profile-soporte">
+                            <?php endif; ?>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
                             <a class="dropdown-item" href="#"><span

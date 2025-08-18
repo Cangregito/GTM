@@ -5,17 +5,7 @@ function init(){
 
 $(document).ready(function() {
     // user_id ya viene de PHP por sesión
-    
-    // Inicializar DataTable
-    cargarTabla();
-    
-    // Evento para filtrar por prioridad
-    $('#filtro_prioridad').change(function() {
-        tablas.draw();
-    });
-});
 
-function cargarTabla() {
     tablas = $('#ticket_data').DataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -33,12 +23,9 @@ function cargarTabla() {
             url: '/ESTADIAS/controller/ticket.php?op=listar_x_usu',
             type: "POST",
             dataType: "json",
-            data: function(d) { 
-                return {
-                    user_id: user_id,
-                    rol_id: rol_id,
-                    prioridad: $('#filtro_prioridad').val()
-                };
+            data: { 
+                user_id: user_id,
+                rol_id: rol_id // <-- Agrega esto
             },
             error: function(e) {
                 console.log(e.responseText);
@@ -75,8 +62,7 @@ function cargarTabla() {
             }
         }
     });
-}
-
+});
 // Función para el botón "Ver" en la tabla
 function ver(tick_id) {
     window.open('http://localhost/ESTADIAS/view/detalleTicket?ID=' + tick_id, '_blank');

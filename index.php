@@ -15,7 +15,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     <link href="public/img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114">
     <link href="public/img/favicon.72x72.png" rel="apple-touch-icon" type="image/png" sizes="72x72">
     <link href="public/img/favicon.57x57.png" rel="apple-touch-icon" type="image/png">
-    <link href="public/img/favicon.png" rel="icon" type="image/png">
+    <link href="/ESTADIAS/docs/iconGTM.png" rel="icon" type="image/png">
     <link href="public/img/favicon.ico" rel="shortcut icon">
     <link rel="stylesheet" href="public/css/separate/pages/login.min.css">
     <link rel="stylesheet" href="public/css/lib/font-awesome/font-awesome.min.css">
@@ -61,6 +61,10 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
         .sign-avatar img {
             border: 2px solid #e0e0e0;
+            width: 100px;  /* Tamaño fijo de ancho */
+            height: 100px; /* Tamaño fijo de alto */
+            object-fit: contain; /* Mantiene la proporción sin distorsionar la imagen */
+            transition: all 0.3s ease; /* Transición suave */
         }
 
         .form-control {
@@ -100,10 +104,10 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                     <header class="sign-title">GTM</header>
                     <input type="hidden" name="csrf_token"
                         value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
-                    <div class="sign-avatar">
-                        <img src="public/img/avatar-sign.png" alt="Gerente de Tienda">
+                    <div class="sign-avatar" style="margin-bottom: 20px; width: 100px; height: 100px; margin-left: auto; margin-right: auto;">
+                        <img src="public/img/Gerente.png" alt="Gerente de Tienda">
                     </div>
-                    <header class="sign-title" id="lbltitulo">Acceso gerente</header>
+                    <header class="sign-title" id="lbltitulo">Acceso Gerente</header>
                     <div class="sign-subtitle">Gestion Total de Mantenimiento</div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="user_correo" name="user_correo"
@@ -124,8 +128,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                 </form>
             </div>
         </div>
-    </div><!--.page-center-->
-
+    </div>
     <script src="public/js/lib/jquery/jquery.min.js"></script>
     <script src="public/js/lib/tether/tether.min.js"></script>
     <script src="public/js/lib/bootstrap/bootstrap.min.js"></script>

@@ -1,0 +1,23 @@
+/* Estilos para las imágenes de perfil */
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: contain;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.profile-image-large {
+    width: 100px;
+    height: 100px;
+}
+
+/* Estilos específicos por rol */
+.profile-gerente {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile-soporte {
+    background-color: rgba(255, 255, 255, 0.1);
+}

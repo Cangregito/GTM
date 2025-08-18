@@ -1,13 +1,16 @@
 <?php
 require_once(__DIR__ . '/../config/conexion.php');
 
-class Usuario extends Conectar {
+class Usuario extends Conectar
+{
 
-    public function login($correo, $pass) {
+    public function login($correo, $pass, $rol_id)
+    {
         $conectare = $this->getConexion();
-        $sql = "SELECT * FROM tm_usuario WHERE user_correo = ? AND estado = 1";
+        $sql = "SELECT * FROM tm_usuario WHERE user_correo = ? AND estado = 1 AND rol_id = ?";
         $stmt = $conectare->prepare($sql);
         $stmt->bindValue(1, $correo);
+        $stmt->bindValue(2, $rol_id);
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 

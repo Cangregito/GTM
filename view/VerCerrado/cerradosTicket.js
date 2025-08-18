@@ -1,4 +1,3 @@
-
 var tablas;
 function init(){
 }
@@ -30,7 +29,7 @@ function cargarTabla() {
             'pdfHtml5'
         ],
         "ajax": {
-            url: '/ESTADIAS/controller/ticket.php?op=listar_x_usu',
+            url: '/ESTADIAS/controller/ticket.php?op=listar_cerrados',
             type: "POST",
             dataType: "json",
             data: function(d) { 
@@ -81,4 +80,10 @@ function cargarTabla() {
 function ver(tick_id) {
     window.open('http://localhost/ESTADIAS/view/detalleTicket?ID=' + tick_id, '_blank');
 }
+
+// Función para el botón "Evidencias" en la tabla
+function evidencia(tick_id) {
+    window.open('http://localhost/ESTADIAS/view/VerCerrado/evidencia?ID=' + tick_id, '_blank');
+}
+
 init();

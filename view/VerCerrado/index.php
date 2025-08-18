@@ -2,7 +2,7 @@
 require_once('../MainHead/head.php');
 ?>
 <!DOCTYPE html>
-<title>Consultar Tiket</title>
+<title>Tickets Cerrados</title>
 <html>
 
 <body class="with-side-menu">
@@ -21,10 +21,10 @@ require_once('../MainHead/head.php');
                 <div class="tbl">
                     <div class="tbl-row">
                         <div class="tbl-cell">
-                            <h3>Consultar Ticket</h3>
+                            <h3>Tickets Cerrados</h3>
                             <ol class="breadcrumb breadcrumb-simple">
                                 <li><a href="#">Home</a></li>
-                                <li class="active">Consultar Ticket</li>
+                                <li class="active">Tickets Cerrados</li>
                             </ol>
                         </div>
                     </div>
@@ -35,7 +35,7 @@ require_once('../MainHead/head.php');
                 <div class="row mb-3" style="margin-bottom: 20px;">
                     <div class="col-md-6">
                         <div class="form-group">
-                        
+                            
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ require_once('../MainHead/head.php');
     var rol_id = <?php echo $_SESSION['rol_id']; ?>;
     </script>
     <!-- Usa ruta absoluta para asegurar que el JS se cargue correctamente -->
-    <script type="text/javascript" src="/ESTADIAS/view/ConsultarTicket/consultarTicket.js"></script>
+    <script type="text/javascript" src="/ESTADIAS/view/VerCerrado/cerradosTicket.js?v=<?php echo time(); ?>"></script>
 </body>
 </body>
 
