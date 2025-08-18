@@ -65,6 +65,21 @@ if ($_SESSION["rol_id"] == 1) {
         </li>
         <?php
         }
+        
+        // Mostrar la opción de Gestión de Inventario para el usuario con nombre "Mantenimiento" y apellido "planta" 
+        // o para el usuario "admin"
+        if ($_SESSION["rol_id"] == 2 && 
+            (($_SESSION["user_nom"] == "Mantenimiento" && $_SESSION["user_ape"] == "planta") || 
+             ($_SESSION["user_nom"] == "admin"))) {
+        ?>
+        <li class="blue-dirty">
+            <a href="/ESTADIAS/view/Inventario/index.php">
+                <span class="glyphicon glyphicon-list"></span>
+                <span class="lbl">Gestión de Inventario</span>
+            </a>
+        </li>
+        <?php
+        }
         ?>
     </ul>
 </nav>

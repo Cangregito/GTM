@@ -1,0 +1,58 @@
+/* Estilos para las notificaciones de inventario */
+
+.dropdown-menu-notif-item .notif-icon {
+    float: left;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #ecf2f5;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.dropdown-menu-notif-item .font-icon-warning {
+    color: #f29824;
+}
+
+.dropdown-menu-notif-item .font-icon-fire {
+    color: #da4c4c;
+}
+
+.dropdown-menu-notif-item .categoria-notif {
+    font-size: 11px;
+    margin-top: 3px;
+    font-style: italic;
+}
+
+.dropdown-menu-notif-item strong {
+    color: #343434;
+}
+
+.dropdown-menu-notif-more {
+    padding: 10px;
+    text-align: center;
+    background-color: #ecf2f5;
+    border-top: 1px solid #d8e2e7;
+}
+
+.dropdown-menu-notif-more a {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0082c6;
+}
+
+.dropdown-menu-notif-more a:hover {
+    text-decoration: underline;
+}
+
+/* Animación para destacar notificaciones nuevas */
+@keyframes highlight {
+    0% { background-color: #fff; }
+    20% { background-color: rgba(0, 130, 198, 0.1); }
+    100% { background-color: #fff; }
+}
+
+.dropdown-menu-notif-item.new {
+    animation: highlight 2s ease-in-out;
+}

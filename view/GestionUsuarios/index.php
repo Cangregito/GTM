@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 // Verificar que el usuario tenga rol de soporte y sea "admin"
 if ($_SESSION["rol_id"] != 2 || $_SESSION["user_nom"] != "admin") {
     header("Location: ../Home/");

@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enviar'])) {
         $_SESSION["user_id"] = $resultado["user_id"];
         $_SESSION["user_nom"] = $resultado["user_nom"];
         $_SESSION["user_ape"] = $resultado["user_ape"];
+        $_SESSION["user_correo"] = $resultado["user_correo"];
         $_SESSION["rol_id"] = $resultado["rol_id"];
         header("Location: ../view/Home/");
         exit;
@@ -147,10 +148,10 @@ if (isset($_GET["op"])) {
             
         // Cambiar contraseña
         case "update_password":
-            if(isset($_POST["user_id"]) && isset($_POST["new_password"])){
+            if(isset($_POST["user_id"]) && isset($_POST["user_pass"])){
                 $result = $usuario->update_password(
                     $_POST["user_id"],
-                    $_POST["new_password"]
+                    $_POST["user_pass"]
                 );
                 
                 if($result){

@@ -1,8 +1,10 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 if (!isset($_SESSION["user_id"])) {
-	header("Location: /ESTADIAS/index.php");
-	exit;
+    header("Location: /ESTADIAS/index.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -29,5 +31,6 @@ if (!isset($_SESSION["user_id"])) {
 	<link rel="stylesheet" href="/ESTADIAS/public/css/separate/vendor/fancybox.min.css">
 	<link rel="stylesheet" href="/ESTADIAS/public/css/separate/pages/activity.min.css">
 	<link rel="stylesheet" href="/ESTADIAS/public/css/separate/profile-images.css">
+	<link rel="stylesheet" href="/ESTADIAS/public/css/separate/notificaciones.css">
 	<link rel="stylesheet" href="/ESTADIAS/public/css/main.css">
 </head>
