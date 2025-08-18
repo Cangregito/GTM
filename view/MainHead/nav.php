@@ -46,12 +46,26 @@ if ($_SESSION["rol_id"] == 1) {
                 <span class="lbl">Consultar Ticket</span>
             </a>
         </li>
-         <li class="blue-dirty">
+        <li class="blue-dirty">
             <a href="/ESTADIAS/view/VerCerrado/index.php">
                 <span class="glyphicon glyphicon-th"></span>
                 <span class="lbl">Consultar Ticket Cerrado</span>
             </a>
         </li>
+        
+        <?php
+        // Solo mostrar la opción de Gestión de Usuarios para el usuario "admin" y rol de soporte (rol_id == 2)
+        if ($_SESSION["rol_id"] == 2 && $_SESSION["user_nom"] == "admin") {
+        ?>
+        <li class="blue-dirty">
+            <a href="/ESTADIAS/view/GestionUsuarios/index.php">
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="lbl">Gestión de Usuarios</span>
+            </a>
+        </li>
+        <?php
+        }
+        ?>
     </ul>
 </nav>
 <?php

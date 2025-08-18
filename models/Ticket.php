@@ -326,4 +326,190 @@ class Ticket extends Conectar {
             return ['error' => $e->getMessage()];
         }
     }
+    
+    /* Métodos para estadísticas del dashboard */
+    
+    // Obtener total de tickets, abiertos y cerrados para un usuario específico
+    public function get_ticket_totales_x_usuario($user_id)
+    {
+        try {
+            $conectar = $this->getConexion();
+            parent::set_names();
+            
+            // Convertir a entero para asegurar que sea un número
+            $user_id = intval($user_id);
+            
+            // Verificar que haya un user_id válido
+            if ($user_id <= 0) {
+                return [
+                    'total' => 0,
+                    'abiertos' => 0,
+                    'cerrados' => 0
+                ];
+            }
+            
+            $sql = "SELECT 
+                    COUNT(*) as total,
+                    COUNT(CASE WHEN tik_estado = 'Abierto' AND estado = 1 THEN 1 END) as abiertos,
+                    COUNT(CASE WHEN tik_estado = 'Cerrado' OR estado = 0 THEN 1 END) as cerrados
+                FROM 
+                    tm_ticket 
+                WHERE 
+                    user_id = ?";
+            
+            $stmt = $conectar->prepare($sql);
+            $stmt->bindValue(1, $user_id);
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            // Si no hay resultados, devolver valores por defecto
+            if (!$result) {
+                return [
+                    'total' => 0,
+                    'abiertos' => 0,
+                    'cerrados' => 0
+                ];
+            }
+            
+            return $result;
+        } catch (PDOException $e) {
+            error_log('Error en get_ticket_totales_x_usuario: ' . $e->getMessage());
+            return [
+                'error' => $e->getMessage(),
+                'total' => 0,
+                'abiertos' => 0,
+                'cerrados' => 0
+            ];
+        }
+    }
+    
+    // Obtener total de tickets por categoría para un usuario específico
+    public function get_ticket_totales_x_categoria_usuario($user_id)
+    {
+        try {
+            $conectar = $this->getConexion();
+            parent::set_names();
+            
+            // Convertir a entero para asegurar que sea un número
+            $user_id = intval($user_id);
+            
+            // Verificar que haya un user_id válido
+            if ($user_id <= 0) {
+                return $this->get_datos_ejemplo_categorias();
+            }
+            
+            $sql = "SELECT 
+                    c.cat_nomb as categoria,
+                    COUNT(*) as total
+                FROM 
+                    tm_ticket t
+                INNER JOIN 
+                    tm_cat c ON t.cat_id = c.cat_id
+                WHERE 
+                    t.user_id = ?
+                GROUP BY 
+                    c.cat_id, c.cat_nomb
+                ORDER BY 
+                    total DESC";
+            
+            $stmt = $conectar->prepare($sql);
+            $stmt->bindValue(1, $user_id);
+            $stmt->execute();
+            
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            // Si no hay resultados, devolver datos de ejemplo
+            if (empty($result)) {
+                return $this->get_datos_ejemplo_categorias();
+            }
+            
+            return $result;
+        } catch (PDOException $e) {
+            error_log('Error en get_ticket_totales_x_categoria_usuario: ' . $e->getMessage());
+            return $this->get_datos_ejemplo_categorias();
+        }
+    }
+    
+    // Obtener total de tickets, abiertos y cerrados de todo el sistema (para soporte)
+    public function get_ticket_totales_general()
+    {
+        try {
+            $conectar = $this->getConexion();
+            parent::set_names();
+            
+            $sql = "SELECT 
+                    COUNT(*) as total,
+                    COUNT(CASE WHEN tik_estado = 'Abierto' AND estado = 1 THEN 1 END) as abiertos,
+                    COUNT(CASE WHEN tik_estado = 'Cerrado' OR estado = 0 THEN 1 END) as cerrados
+                FROM 
+                    tm_ticket";
+            
+            $stmt = $conectar->prepare($sql);
+            $stmt->execute();
+            
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return ['error' => $e->getMessage()];
+        }
+    }
+    
+    // Obtener total de tickets por categoría de todo el sistema (para soporte)
+    public function get_ticket_totales_x_categoria_general()
+    {
+        try {
+            $conectar = $this->getConexion();
+            parent::set_names();
+            
+            $sql = "SELECT 
+                    c.cat_nomb as categoria,
+                    COUNT(*) as total
+                FROM 
+                    tm_ticket t
+                INNER JOIN 
+                    tm_cat c ON t.cat_id = c.cat_id
+                GROUP BY 
+                    c.cat_id, c.cat_nomb
+                ORDER BY 
+                    total DESC";
+            
+            $stmt = $conectar->prepare($sql);
+            $stmt->execute();
+            
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            // Si no hay resultados, devolver datos de ejemplo
+            if (empty($result)) {
+                return $this->get_datos_ejemplo_categorias();
+            }
+            
+            return $result;
+        } catch (PDOException $e) {
+            error_log('Error en get_ticket_totales_x_categoria_general: ' . $e->getMessage());
+            return $this->get_datos_ejemplo_categorias();
+        }
+    }
+    
+    // Función para generar datos de ejemplo para gráficos cuando no hay datos reales
+    private function get_datos_ejemplo_categorias()
+    {
+        return [
+            [
+                'categoria' => 'Mantenimiento Correctivo',
+                'total' => 0
+            ],
+            [
+                'categoria' => 'Mantenimiento Preventivo',
+                'total' => 0
+            ],
+            [
+                'categoria' => 'Infraestructura y edificio',
+                'total' => 0
+            ],
+            [
+                'categoria' => 'Sistemas y Redes',
+                'total' => 0
+            ]
+        ];
+    }
 }

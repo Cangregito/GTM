@@ -1,4 +1,11 @@
 <?php
+session_start();
+// Verificar que el usuario haya iniciado sesión
+if (!isset($_SESSION["user_id"])) {
+    header("Location: /ESTADIAS/index.php");
+    exit;
+}
+
 require_once('../MainHead/head.php');
 ?>
 <!DOCTYPE html>
