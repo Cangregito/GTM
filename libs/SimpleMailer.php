@@ -85,5 +85,18 @@ class SimpleMailer {
         error_log("Correo registrado en $log_file");
         return true;
     }
+    
+    /**
+     * Alias para el método send() para compatibilidad
+     * 
+     * @param string $to Correo del destinatario
+     * @param string $subject Asunto del correo
+     * @param string $message Mensaje (puede ser HTML)
+     * @param string $reply_to Correo de respuesta (opcional)
+     * @return bool Éxito o fracaso
+     */
+    public function sendMail($to, $subject, $message, $reply_to = '') {
+        return $this->send($to, $subject, $message, $reply_to);
+    }
 }
 ?>

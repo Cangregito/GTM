@@ -1,0 +1,48 @@
+# Archivos de configuración sensibles
+.env
+config/database.php
+
+# Logs
+logs/*.log
+*.log
+
+# Archivos temporales
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Archivos subidos por usuarios
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Backups (locales, no subir al repo)
+backups/
+backup_*.sql
+backup_*.zip
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Cache
+cache/
+tmp/
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Dependencias (si usas composer)
+vendor/
+composer.lock
+
+# Archivos de backup de base de datos
+*.sql
+*.dump
+
+# Archivos de session
+sessions/

@@ -226,5 +226,123 @@ class Usuario extends Conectar
         
         return $resultado;
     }
+
+    /* MÉTODOS PARA RESET DE PASSWORD */
+    
+    // Verificar si un usuario existe por email
+    public function verificar_usuario_existe($email)
+    {
+        $conectare = $this->getConexion();
+        $sql = "SELECT user_id FROM tm_usuario WHERE user_correo = ? AND estado = 1";
+        $stmt = $conectare->prepare($sql);
+        $stmt->bindValue(1, $email);
+        $stmt->execute();
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC) !== false;
+    }
+    
+    // Guardar código de reset
+    public function guardar_codigo_reset($email, $codigo, $expiry)
+    {
+        $conectare = $this->getConexion();
+        
+        // Primero limpiar códigos anteriores del usuario
+        $this->limpiar_reset_data($email);
+        
+        $sql = "INSERT INTO tm_reset_password (user_email, reset_code, reset_expiry, created_at) 
+                VALUES (?, ?, ?, NOW())";
+        $stmt = $conectare->prepare($sql);
+        $stmt->bindValue(1, $email);
+        $stmt->bindValue(2, $codigo);
+        $stmt->bindValue(3, $expiry);
+        
+        return $stmt->execute();
+    }
+    
+    // Verificar código de reset
+    public function verificar_codigo_reset($email, $codigo)
+    {
+        $conectare = $this->getConexion();
+        $sql = "SELECT id FROM tm_reset_password 
+                WHERE user_email = ? AND reset_code = ? 
+                AND reset_expiry > NOW() AND used = 0";
+        $stmt = $conectare->prepare($sql);
+        $stmt->bindValue(1, $email);
+        $stmt->bindValue(2, $codigo);
+        $stmt->execute();
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC) !== false;
+    }
+    
+    // Guardar token de reset
+    public function guardar_token_reset($email, $token, $expiry)
+    {
+        $conectare = $this->getConexion();
+        
+        // Marcar el código como usado
+        $sql = "UPDATE tm_reset_password SET used = 1 WHERE user_email = ? AND used = 0";
+        $stmt = $conectare->prepare($sql);
+        $stmt->bindValue(1, $email);
+        $stmt->execute();
+        
+        // Insertar token
+        $sql = "INSERT INTO tm_reset_tokens (user_email, reset_token, token_expiry, created_at) 
+                VALUES (?, ?, ?, NOW())";
+        $stmt = $conectare->prepare($sql);
+        $stmt->bindValue(1, $email);
+        $stmt->bindValue(2, $token);
+        $stmt->bindValue(3, $expiry);
+        
+        return $stmt->execute();
+    }
+    
+    // Verificar token de reset
+    public function verificar_token_reset($email, $token)
+    {
+        $conectare = $this->getConexion();
+        $sql = "SELECT id FROM tm_reset_tokens 
+                WHERE user_email = ? AND reset_token = ? 
+                AND token_expiry > NOW() AND used = 0";
+        $stmt = $conectare->prepare($sql);
+        $stmt->bindValue(1, $email);
+        $stmt->bindValue(2, $token);
+        $stmt->execute();
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC) !== false;
+    }
+    
+    // Actualizar contraseña
+    public function actualizar_password($email, $newPassword)
+    {
+        $conectare = $this->getConexion();
+        $passHash = password_hash($newPassword, PASSWORD_DEFAULT);
+        
+        $sql = "UPDATE tm_usuario SET user_pass = ?, user_modi = NOW() WHERE user_correo = ? AND estado = 1";
+        $stmt = $conectare->prepare($sql);
+        $stmt->bindValue(1, $passHash);
+        $stmt->bindValue(2, $email);
+        
+        return $stmt->execute();
+    }
+    
+    // Limpiar datos de reset
+    public function limpiar_reset_data($email)
+    {
+        $conectare = $this->getConexion();
+        
+        // Marcar códigos como usados
+        $sql = "UPDATE tm_reset_password SET used = 1 WHERE user_email = ?";
+        $stmt = $conectare->prepare($sql);
+        $stmt->bindValue(1, $email);
+        $stmt->execute();
+        
+        // Marcar tokens como usados
+        $sql = "UPDATE tm_reset_tokens SET used = 1 WHERE user_email = ?";
+        $stmt = $conectare->prepare($sql);
+        $stmt->bindValue(1, $email);
+        $stmt->execute();
+        
+        return true;
+    }
 }
 ?>

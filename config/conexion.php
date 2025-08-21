@@ -6,14 +6,25 @@ class Conectar {
 
     public function __construct() {
         try {
+            // Usar variables de entorno si están disponibles, sino valores por defecto
+            $host = $_ENV['DB_HOST'] ?? 'localhost';
+            $dbname = $_ENV['DB_NAME'] ?? 'GTM_DB';
+            $username = $_ENV['DB_USER'] ?? 'root';
+            $password = $_ENV['DB_PASS'] ?? '';
+            
             $this->dbh = new PDO(
-                "mysql:host=localhost;dbname=GTM_DB",
-                "root",
-                ""
+                "mysql:host={$host};dbname={$dbname};charset=utf8",
+                $username,
+                $password,
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    PDO::ATTR_EMULATE_PREPARES => false
+                ]
             );
-            $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (Exception $e) {
-            die("Error de conexión: " . $e->getMessage());
+            error_log("Error de conexión a BD: " . $e->getMessage());
+            die("Error de conexión a la base de datos. Contacte al administrador.");
         }
     }
 

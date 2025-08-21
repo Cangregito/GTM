@@ -90,7 +90,13 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         <div class="page-center-in">
             <div class="container-fluid">
                 <?php if (isset($_GET['m'])): ?>
-                    <div class="alert alert-danger">
+                    <div class="alert alert-<?php 
+                        if ($_GET['m'] == 1) echo 'danger';
+                        elseif ($_GET['m'] == 2) echo 'warning';
+                        elseif ($_GET['m'] == 'csrf') echo 'danger';
+                        elseif ($_GET['m'] == 'password_reset_success') echo 'success';
+                        else echo 'info';
+                    ?>">
                         <?php
                         if ($_GET['m'] == 1)
                             echo "Correo o contraseña incorrectos.";
@@ -98,6 +104,8 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                             echo "Debes completar todos los campos.";
                         if ($_GET['m'] == 'csrf')
                             echo "Token de seguridad inválido. Intenta de nuevo.";
+                        if ($_GET['m'] == 'password_reset_success')
+                            echo "<i class='fa fa-check-circle'></i> ¡Contraseña actualizada exitosamente! Ya puedes iniciar sesión con tu nueva contraseña.";
                         ?>
                     </div>
                 <?php endif; ?>

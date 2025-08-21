@@ -42,12 +42,15 @@ switch($_GET["op"]){
                     $prioridad_color = "danger";
                     break;
                 case "Alto":
+                case "Alta":
                     $prioridad_color = "warning";
                     break;
                 case "Medio":
+                case "Media":
                     $prioridad_color = "primary";
                     break;
                 case "Bajo":
+                case "Baja":
                     $prioridad_color = "info";
                     break;
                 default:
@@ -94,12 +97,15 @@ switch($_GET["op"]){
                     $prioridad_color = "danger";
                     break;
                 case "Alto":
+                case "Alta":
                     $prioridad_color = "warning";
                     break;
                 case "Medio":
+                case "Media":
                     $prioridad_color = "primary";
                     break;
                 case "Bajo":
+                case "Baja":
                     $prioridad_color = "info";
                     break;
                 default:
