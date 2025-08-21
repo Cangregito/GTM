@@ -84,3 +84,120 @@ a.label:hover {
 .label-danger[href]:hover {
   background-color: #c9302c;
 }
+
+/* Estilos específicos para notificaciones de gerente */
+.notification-item {
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.notification-item:hover {
+  background-color: #f8f9fa;
+  border-left-color: #007bff;
+}
+
+.notification-item.priority-high {
+  border-left-color: #dc3545;
+  background-color: #fff5f5;
+}
+
+.notification-item.priority-medium {
+  border-left-color: #ffc107;
+  background-color: #fffbf0;
+}
+
+.notification-item.priority-normal {
+  border-left-color: #28a745;
+}
+
+.notification-content {
+  padding: 8px 12px;
+}
+
+.notification-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 0.875rem;
+}
+
+.notification-header i {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.notification-message {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #495057;
+}
+
+.notification-message strong {
+  color: #212529;
+}
+
+/* Indicador de rendimiento en header */
+.header-performance-indicator {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 15px;
+  font-size: 0.875rem;
+}
+
+.header-performance-indicator i {
+  margin-right: 5px;
+}
+
+/* Toast personalizado para gerente */
+.gerente-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1060;
+  min-width: 350px;
+}
+
+.gerente-toast .toast-header {
+  background-color: #007bff;
+  color: white;
+}
+
+.gerente-toast .toast-header i {
+  margin-right: 8px;
+}
+
+/* Estilos para el badge de notificaciones críticas */
+.header-alarm.priority-critical .label {
+  background-color: #dc3545;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Estilos responsivos para notificaciones */
+@media (max-width: 768px) {
+  .notification-item {
+    border-left-width: 2px;
+  }
+  
+  .notification-content {
+    padding: 6px 10px;
+  }
+  
+  .gerente-toast {
+    min-width: 300px;
+    right: 10px;
+    top: 10px;
+  }
+}

@@ -3,8 +3,8 @@
  */
 
 $(document).ready(function() {
-    // Solo ejecutar para usuarios con acceso al inventario (admin o Mantenimiento planta)
-    if (tieneAccesoInventario()) {
+    // Ejecutar para gerentes o usuarios con acceso al inventario
+    if (esGerente() || tieneAccesoInventario()) {
         // Cargar las notificaciones al cargar la página
         cargarNotificaciones();
         
@@ -22,12 +22,21 @@ $(document).ready(function() {
 });
 
 /**
+ * Verifica si el usuario actual es gerente
+ * @return {Boolean} Verdadero si es gerente, falso si no
+ */
+function esGerente() {
+    const rol_id = $('#rol_idx').val() || userRole;
+    return rol_id == '1';
+}
+
+/**
  * Verifica si el usuario actual tiene acceso al módulo de inventario
  * @return {Boolean} Verdadero si tiene acceso, falso si no
  */
 function tieneAccesoInventario() {
     // Obtener datos del usuario actual
-    const rol_id = $('#rol_idx').val();
+    const rol_id = $('#rol_idx').val() || userRole;
     
     // Si no hay información de usuario, no tiene acceso
     if (!rol_id) return false;
