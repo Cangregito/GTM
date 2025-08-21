@@ -9,12 +9,6 @@ if ($_SESSION["rol_id"] == 1) {
                 <span class="lbl">Inicio</span>
             </a>
         </li>
-        <li class="gold">
-            <a href="/ESTADIAS/view/Dashboard/">
-                <span class="glyphicon glyphicon-dashboard"></span>
-                <span class="lbl">Dashboard Gerencial</span>
-            </a>
-        </li>
         <li class="blue-dirty">
             <a href="/ESTADIAS/view/NuevoTicket/index.php">
                 <span class="glyphicon glyphicon-th"></span>

@@ -16,47 +16,6 @@
         <div class="site-header-content">
             <div class="site-header-content-in">
                 <div class="site-header-shown">
-                    <!-- Notificaciones -->
-                    <div class="dropdown dropdown-notification notif">
-                        <a href="#" class="header-alarm dropdown-toggle" id="dd-notification"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="font-icon-alarm"></i>
-                            <span class="label label-danger" style="display: none;">0</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-notif"
-                            aria-labelledby="dd-notification">
-                            <div class="dropdown-menu-notif-header">
-                                <?php if(isset($_SESSION["rol_id"]) && $_SESSION["rol_id"] == 1): ?>
-                                    <span class="font-icon font-icon-star"></span>
-                                    Notificaciones Gerenciales
-                                <?php else: ?>
-                                    <span class="font-icon font-icon-warning"></span>
-                                    Notificaciones de Sistema
-                                <?php endif; ?>
-                                <div class="dropdown-menu-notif-header-create">
-                                    <button class="create" onclick="window.gerenteNotificaciones?.cargarNotificaciones()">
-                                        <i class="font-icon font-icon-refresh"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="jscroll" style="max-height: 350px; overflow-y: auto;">
-                                <div class="dropdown-item text-center">
-                                    <p class="color-blue-grey-lighter">
-                                        <i class="font-icon font-icon-refresh spinning"></i>
-                                        Cargando notificaciones...
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <?php if(isset($_SESSION["rol_id"]) && $_SESSION["rol_id"] == 1): ?>
-                    <!-- Indicador de rendimiento para gerente -->
-                    <div class="header-performance-indicator">
-                        <i class="font-icon-check-circle text-success"></i>
-                        <span class="text-success">Óptimo</span>
-                    </div>
-                    <?php endif; ?>
                     <!-- MENU DESPLEJABLE PRINCIPAL -->
                     <div class="dropdown user-menu">
                         <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown"
